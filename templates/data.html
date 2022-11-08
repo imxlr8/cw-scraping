@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Flask app</title>
+</head>
+<body>
+    <h1>スクレイプした内容</h1>
+    <div class="option">
+        <h3>職種</h3>
+        <p class="box1-c pl20">{{ job }}</p>
+    </div>
+    <div class="option">
+        <h3>スキル</h3>
+        {% if skill_list == ['index'] %}
+            <p class="pl20">選択なし</p>
+        {% else %}
+            <ul class="pl20">
+                {% for skill in skill_list %}
+                    <li class="pb10">{{ skill }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>性別</h3>
+        {% if sex == '' %}
+        <p class="pl20">指定なし</p>
+        {% else %}
+        <p class="pl20">{{ sex }}</p>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>年齢</h3>
+        {% if age == '' %}
+        <p class="pl20">指定なし</p>
+        {% else %}
+        <p class="pl20">{{ age }}代</p>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>都道府県</h3>
+        {% if prefecture == '' %}
+        <p class="pl20">指定なし</p>
+        {% else %}
+        <p class="pl20">{{ prefecture }}</p>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>本人確認</h3>
+        {% if idv == '済み' %}
+        <p class="pl20">本人確認済み</p>
+        {% elif idv == '指定なし' %}
+        <p class="pl20">指定なし</p>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>Web会議</h3>
+        {% if webm == '可能' %}
+        <p class="pl20">Web会議可能</p>
+        {% elif webm == '指定なし' %}
+        <p class="pl20">指定なし</p>
+        {% endif %}
+    </div>
+    <div class="option">
+        <h3>スコア</h3>
+        {% if score == '3.0以上' %}
+        <p class="pl20">★★★☆☆ 3.0以上</p>
+        {% elif score == '4.0以上' %}
+        <p class="pl20">★★★★☆ 4.0以上</p>
+        {% elif score == '5.0' %}
+        <p class="pl20">★★★★★ 5.0</p>
+        {% else %}
+        <p class="pl20">指定なし</p>
+        {% endif %}
+    </div>
+    <br>
+    <hr>
+    <div class="mb50"></div>
+    <div class="button">
+        <button class="btn_06" onclick="history.back()"><span>戻る</span></button>
+    </div>
+</body>
+</html>
